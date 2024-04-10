@@ -1,0 +1,3 @@
+qiskit
+qiskit[visualization]
+qiskit_aer
