@@ -1,3 +1,6 @@
 *aux
 *gz
-*pdf
+main.pdf
+*log
+.vscode
+.bsc-thesis/
