@@ -1,3 +1,3 @@
 .PHONY:
 clean:
-	$(RM) **/*gz **/*bbl
+	$(RM) **/*gz **/*bbl **/*lol **/*snippets
