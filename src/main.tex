@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[11pt]{report}
 
 % Packages
 \usepackage{graphicx}     % For images
@@ -7,6 +7,17 @@
 \usepackage{iflang}       % For language conditional commands
 \usepackage{polyglossia}  % For multiple languages
 \usepackage{fontspec}     % For specifying fonts
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{dirtytalk}
+\usepackage{braket}
+\usepackage{minted}
+\usemintedstyle{friendly}
+\setmintedinline{breaklines}
+\usepackage{amsmath}
+\usepackage[numbib]{tocbibind}
+
+\usepackage{todonotes} % remove after "realese"
 
 
 %=================================================================
@@ -64,6 +75,7 @@
 \thispagestyle{empty}
 \listoffigures
 \listoftables
+\listoflistings
 \newpage
 
 % Main Content
