@@ -1,0 +1,60 @@
+\section{The Binary Numeral System}
+
+The \textit{binary numeral system} is a positional numeral system that uses two values -
+zero (0) and one (1) - to notate numbers. A number notated using two values is called
+a \textit{binary number}. This can be expressed as
+
+\begin{equation}
+    x \in B:\{0, 1\}\text{, where x is any binary number}
+\end{equation}
+
+Binary numbers are expressed as a sequence of digits $d_id_{i-1}\ldots d_1d_0$
+where $i$ is the position of the digit $d$. A more concise expression of
+a binary number is
+
+\begin{equation}
+    \sum_{i=0}^{n}d_i\times2^i
+\end{equation}
+
+which expression is derived by the general definition
+
+\begin{equation}
+    \sum_{i=0}^{n}d_i\times b^i
+\end{equation}
+
+where $b$ is the \textit{base} or \textit{radix} of the numeral system the
+number is expressed in and $n$ is the total digits of the number. The digits
+of a binary number are notoriously called \textit{binary digits} or \textit{bits}
+for short.
+
+We note that the left-most bit of a binary number is called the \textit{most-significant bit}
+and the right-most \textit{least-significant bit}, \textit{MSB} and \textit{LSB} resprectively.
+
+To differentiate \textit{decimal numbers} from binary numbers we notate that
+number with its base in subscript. So, the decimal number $110$ will be
+notated as $110_{10}$ and the binary number $1010$ as $1010_2$.
+
+We can covnert any binary number to its decimal numeral notation by
+following the expression 2.2. So, $1010_2$ is expressed in decimal as
+
+\begin{equation}
+    1010_2 = 1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1  + 0 \times 2^0 = 8 + 0 + 2 + 0 = 10_{10}
+\end{equation}
+
+We can also do the reverse, convert a decimal number into its binary notation, by recursively
+dividing by the binary base and noting down the remainders until the operations gives a zero.
+For example, $13_{10}$ is converted in binary notation as follows:
+
+\begin{enumerate}
+    \item $13 \div 2 = 6\text{ (remainder 1)}$
+    \item $6 \div 2 = 3\text{ (remainder 0)}$
+    \item $3 \div 2 = 1\text{ (remainder 1)}$
+    \item $1 \div 2 = 0\text{ (remainder 1)}$
+\end{enumerate}
+
+The binary system is useful to all modern computers as they operate by using transistors
+as saturated switches. This was first realised by Shannon \cite{Shannon1937} where he
+noted that any switching circuit can obey the rules of \textit{binary logic}. This kind
+of logic was developed by Boole \cite{Boole1847} and later concretely founded by
+Huntington \cite{Huntington1904}. This logic is now know as \textit{Boolean logic}
+and we will talk in more depth in chapter ?.

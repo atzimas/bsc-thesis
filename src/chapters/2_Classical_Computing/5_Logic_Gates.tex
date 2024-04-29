@@ -1,0 +1,99 @@
+\section{The Digital Logic Gates}
+
+Computers are constructed using \textit{digital components} - components
+that fundamentaly operate with binary inputs. These components manipulate
+voltages to produce a specific output - a logical low voltage is considered
+the zero or false state and a logical high voltage is considered the one or
+truth state. These components are called \textit{logic gates} or \textit{logic components}.
+
+Just like Boolean Algebra, these components adhere to the same rules. The universal
+operations - the AND, OR and NOT functions - using the \textit{circuit model} of
+computation are treated as circuits that accomplish the same operation.
+
+The AND gate is a digital gate that takes two 1-bit inputs and outputs their logical
+conjunction. Thus the truth table and operator are analogous to its Boolean counterpart.
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) node[and port] (p) {};
+        \draw (p.in 1) node[left] {$a$};
+        \draw (p.in 2) node[left] {$b$};
+        \draw (p.out) node[right] {$a \land b = a \cdot b$};
+    \end{circuitikz}
+    \caption{The circuit symbol for the AND function}
+\end{figure}
+
+The OR gate is a digital gate that takes two 1-bit inputs and outputs their logical
+disjunction. Again the truth table and operator are analogous to its Boolean counterpart.
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) node[or port] (p) {};
+        \draw (p.in 1) node[left] {$a$};
+        \draw (p.in 2) node[left] {$b$};
+        \draw (p.out) node[right] {$a \lor b = a + b$};
+    \end{circuitikz}
+    \caption{The circuit symbol for the OR function}
+\end{figure}
+
+Lastly, the NOT gate takes a 1-bit input and outputs its logical negation.
+
+\begin{figure}[ht]
+    \centering
+    \begin{circuitikz}
+        \draw (0,0) node[not port] (p) {};
+        \draw (p.in) node[left] {$a$};
+        \draw (p.out) node[right] {$\lnot a = a'$};
+    \end{circuitikz}
+    \caption{The circuit symbol for the AND function}
+\end{figure}
+
+We would like to point out that there are also digital logic gates that symbolise the
+other compount logic functions - NAND, NOR, XOR and XNOR.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{circuitikz}
+            \draw (0,0) node[nand port] (p) {};
+            \draw (p.in 1) node[left] {$a$};
+            \draw (p.in 2) node[left] {$b$};
+            \draw (p.out) node[right] {$\lnot(a \land b) = (a \cdot b)'$};
+        \end{circuitikz}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{circuitikz}
+            \draw (0,0) node[nor port] (p) {};
+            \draw (p.in 1) node[left] {$a$};
+            \draw (p.in 2) node[left] {$b$};
+            \draw (p.out) node[right] {$\lnot(a \lor b) = (a + b)'$};
+        \end{circuitikz}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{circuitikz}
+            \draw (0,0) node[xor port] (p) {};
+            \draw (p.in 1) node[left] {$a$};
+            \draw (p.in 2) node[left] {$b$};
+            \draw (p.out) node[right] {$a \oplus b$};
+        \end{circuitikz}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \begin{circuitikz}
+            \draw (0,0) node[xnor port] (p) {};
+            \draw (p.in 1) node[left] {$a$};
+            \draw (p.in 2) node[left] {$b$};
+            \draw (p.out) node[right] {$(a \oplus b)' = a \odot b$};
+        \end{circuitikz}
+        \caption{}
+    \end{subfigure}
+    \caption{The digital logic gates for (a) NAND, (b) NOR, (c) XOR and (d) XNOR functions}
+\end{figure}

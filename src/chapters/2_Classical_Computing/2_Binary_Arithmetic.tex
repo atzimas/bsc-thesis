@@ -1,0 +1,86 @@
+\section{Binary Arithmetic}
+
+Just like in the decimal system, the binary system, defines operations that operate
+using binary numbers.
+
+Addition in binary is as simple as addition in decimal. The symbol that carries the
+binary addition is \say{$+$} and the rules or \textit{axioms} are as followed:
+
+\begin{enumerate}
+    \item $0 + x = x\text{ , where $x$ is a bit}$. This rule defines zero as the
+    identity element of addition, which means that any binary number that is
+    added with zero will equal itself.
+    \item $1 + 1 = 0\text{ , carrying 1}$. This is called carry
+    and it's similar to when we add two decimal number together and they
+    exceed the base (10). This produces a one that will be added to next
+    sum of terms.
+\end{enumerate}
+
+For example, we shall add $1101_2 + 1011_2$:
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c cccc}
+        $1$ & $1$   & $1$  & $1$  & \\
+        $ $ & $1$  & $1$ & $0$ & $1$ \\
+        $+$ & $1$ & $0$ & $1$ & $1$ \\
+        \hline
+        $1$ & $1$ & $0$ & $0$ & $0$ \\
+    \end{tabular}
+    \caption{An example of binary addition}
+\end{table}
+
+Note the top row of digits, which are the carry bits from each column addition.
+
+Binary Subtraction is also simple.
+
+\begin{enumerate}
+    \item $0 - 0 = 0$
+    \item $0 - 1 = 1\text{ , borrowing }1$. This is similar to the carry except
+    the next two digits that are going to be subtracted need to subtract the borrow too.
+    \item $1 - 0 = 1$
+    \item $1 - 1 = 0$
+\end{enumerate}
+
+For example, we shall subtract $1101_2 - 1011_2$:
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c cccc}
+        $ $ & $ $ & $1$ & $ $ & \\
+        $ $ & $1$ & $1$ & $0$ & $1$ \\
+        $-$ & $1$ & $0$ & $1$ & $1$ \\
+        \hline
+        $ $ & $0$ & $0$ & $1$ & $0$ \\
+    \end{tabular}
+    \caption{An example of binary subtraction}
+\end{table}
+
+Lastly, we will discuss the axioms of binary multiplication. The product of any two binary
+numbers can be produced by firstly calculating the \textit{partial product} of these two
+numbers. The partial product is calculated by the following axioms:
+
+\begin{enumerate}
+    \item $0 \times x = 0$
+    \item $1 \times x = x$. One (1) is the identity element of binary multiplication.
+\end{enumerate}
+
+The product can then be calculated by summing all the partial products.
+
+For example, we shall multiply $1101_2 \times 1011_2$:
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c cccccccc}
+        $ $      & $ $ & $ $ & $ $ & $ $ & $1$ & $1$ & $0$ & $1$ \\
+        $\times$ & $ $ & $ $ & $ $ & $ $ & $1$ & $0$ & $1$ & $1$ \\
+        \hline
+        $ $ & $ $ & $ $ & $ $ & $ $ & $1$ & $1$ & $0$ & $1$ \\
+        $ $ & $ $ & $ $ & $ $ & $1$ & $1$ & $0$ & $1$ & $ $ \\
+        $ $ & $ $ & $ $ & $0$ & $0$ & $0$ & $0$ & $ $ & $ $ \\
+        $+$ & $ $ & $1$ & $1$ & $0$ & $1$ & $ $ & $ $ & $ $ \\
+        \hline
+        $ $ & $1$ & $0$ & $0$ & $0$ & $1$ & $1$ & $1$ & $1$ \\
+    \end{tabular}
+    \caption{An example of binary multiplication}
+\end{table}

@@ -1,0 +1,115 @@
+\section{Boolean Algebra}
+
+Boolean algebra is a branch of algebra that operates with binary variables - variable that can be assigned
+either \textit{true} or \textit{false}. It defines three basic operations: negation ($\lnot$), conjunction
+($\land$) and disjunction ($\lor$).
+
+\begin{equation}
+    A \land B
+\end{equation}
+
+\begin{equation}
+    A \lor B
+\end{equation}
+
+\begin{equation}
+    \lnot A
+\end{equation}
+
+These operators are also symbolised as $\cdot$ (conjunction), $+$ (disjunction) and $'$ (negation). The
+rules of operations for each operator is described in the following \textit{truth tables}. A truth
+table is a table that displays all the possible binary values of a \textit{boolean variable}
+and all the possible outputs. These operators are most commonly mapped to logic functions:
+AND (conjunction), OR (disjunction) and NOT (negation), which can take either two input variables, for
+the first two, or one input variable, for the last one. These function names are also used to map
+the operation in the circuit model (see section 2.5).
+
+The AND logic function states that the output will be \textit{true} (or logical 1) if and only if
+both input variables are in the logical 1 state.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{cc|c}
+        $a$ & $b$ & $a \land b = a \cdot b$ \\
+        \hline
+        $0$ & $0$ & $0$ \\
+        $0$ & $1$ & $0$ \\
+        $1$ & $0$ & $0$ \\
+        $1$ & $1$ & $1$ \\
+    \end{tabular}
+    \caption{The truth table for the conjunction operator}
+\end{table}
+
+The OR logic function states that the output will be \textit{true} if both or at the very least
+one of the input variables are in the logical 1 state.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{cc|c}
+        $a$ & $b$ & $a \lor b = a + b$ \\
+        \hline
+        $0$ & $0$ & $0$ \\
+        $0$ & $1$ & $1$ \\
+        $1$ & $0$ & $1$ \\
+        $1$ & $1$ & $1$ \\
+    \end{tabular}
+    \caption{The truth table for the disjunction operator}
+\end{table}
+
+The NOT logic function inverts the state of the input variable - if the input is one the logical
+state 0 then it is inverted to the logical 1 state and vice versa.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{c|c}
+        $a$ & $\lnot a = a'$ \\
+        \hline
+        $0$ & $1$ \\
+        $1$ & $0$ \\
+    \end{tabular}
+    \caption{The truth table for the negation operator}
+\end{table}
+
+These are also called \textit{universal operators} because they can be used with each other to create
+other logic functions like: the NAND (Not-AND), NOR (Not-OR), XOR (Exclusive-OR), XNOR (Exclusive-Not-OR)
+are some of the most common functions other than the universal ones.
+
+The NAND and NOR functions are self explanatory, they are just the negated AND and OR functions.
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{cc|c}
+        $a$ & $b$ & $\lnot(a \land b) = (a \cdot b)'$ \\
+        \hline
+        $0$ & $0$ & $1$ \\
+        $0$ & $1$ & $1$ \\
+        $1$ & $0$ & $1$ \\
+        $1$ & $1$ & $0$ \\
+    \end{tabular}
+    \caption{The truth table for the NAND function}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{cc|c}
+        $a$ & $b$ & $\lnot(a \lor b) = (a + b)'$ \\
+        \hline
+        $0$ & $0$ & $1$ \\
+        $0$ & $1$ & $0$ \\
+        $1$ & $0$ & $0$ \\
+        $1$ & $1$ & $0$ \\
+    \end{tabular}
+    \caption{The truth table for the NOR function}
+\end{table}
+
+The XOR function is the most elaborate logic function. The output is only true when only one of the 
+inputs are true. This function is sometimes symbolised by the $\oplus$ operator.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{cc|c}
+        $a$ & $b$ & $(\lnot a \land b) \lor (a \land \lnot b) = a'\cdot b + a\cdot b' = a \oplus b$ \\
+        \hline
+        $0$ & $0$ & $1$ \\
+        $0$ & $1$ & $1$ \\
+        $1$ & $0$ & $1$ \\
+        $1$ & $1$ & $0$ \\
+    \end{tabular}
+    \caption{The truth table for the NAND function}
+\end{table}
