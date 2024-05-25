@@ -4,7 +4,7 @@ First we shall consider the classic circuit diagram of the Half-Adder circuit fr
 
 \subsection{Analysing the diagram and logic of the Quantum Half-Adder}
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
     \includegraphics{images/5_Implementation/classical_halfadder_diagram.pdf}
     \caption{The classical Half-Adder circuit diagram}
@@ -14,7 +14,7 @@ The circuit takes two 1-bit inputs, $A$ and $B$ and produces two 1-bit outputs $
 As we can see from the diagram, to compute the sum of the inputs we have to apply an XOR gate on the inputs. As for the carry, we apply the
 AND gate. From this simple analysis we can produce the truth table of this circuit to better construct its quantum-counterpart.
 
-\begin{table}[ht]
+\begin{table}[!ht]
     \centering
     \begin{tabular}{c c|c c}
         $A$ & $B$ & $S = A \oplus B$ & $C = A \cdot B$ \\
@@ -33,7 +33,7 @@ appropriate quantum gates.
 Let $A$ and $B$ be two 1-qubit inputs. The XOR boolean function maps directly with the Feynman gate (or controlled-NOT/CNOT gate). We can deduce that
 from comparing the two gates truth table.
 
-\begin{table}[ht]
+\begin{table}[!ht]
     \centering
     \begin{subtable}[h]{0.45\textwidth}
         \centering
@@ -47,7 +47,7 @@ from comparing the two gates truth table.
         \end{tabular}
         \caption{CNOT's truth table}
     \end{subtable}
-    \begin{subtable}[h]{0.45\textwidth}
+    \begin{subtable}[!h]{0.45\textwidth}
         \centering
         \begin{tabular}{cc|c}
             $A$ & $B$ & $A \oplus B$ \\
@@ -69,7 +69,7 @@ impossible to construct the same functionality using quantum gates. We shall bor
 By applying the Toffoli gate with control qubits $\ket{A}$, $\ket{B}$ and the borrowed qubit $\ket{O}$, as the target, we simulate the AND functionality
 directly.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
     \includegraphics{images/5_Implementation/toffoli_gate_diagram.pdf}
     \caption{The Toffoli gate diagram}
@@ -78,7 +78,7 @@ directly.
 At the end of the computation, $\ket{O}$ will store the conjunction of $\ket{A}$ and $\ket{B}$. This can be seen more clearly from the side-by-side
 view of the truth tables of the two gates.
 
-\begin{table}[ht]
+\begin{table}[!ht]
     \centering
     \begin{subtable}[h]{0.45\textwidth}
         \centering
@@ -110,7 +110,7 @@ view of the truth tables of the two gates.
 The complete circuit has to be constructed with caution because if we apply the CNOT gate first, we inevitably change the state of $\ket{B}$. With this
 knowledge at hand we have to apply the CCNOT gate as the first computational step and later the CNOT gate.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
     \includegraphics{images/5_Implementation/half_adder.pdf}
     \caption{The quantum Half-Adder circuit with slices that indicate each computational step}
@@ -122,7 +122,7 @@ We are going to enumerate over each computational step:
     \item $\ket{B'} = CNOT\ket{A}\otimes\ket{B} = \ket{A \cdot B}$
 \end{enumerate}
 
-\begin{table}[ht]
+\begin{table}[!ht]
     \centering
     \begin{tabular}{ccc|ccc}
         $\ket{A}$ & $\ket{B}$ & $\ket{O}$ & $\ket{A'} = \ket{A}$ & $\ket{B'} = \ket{C}$ & $\ket{O'} = \ket{S}$ \\
@@ -137,12 +137,12 @@ We are going to enumerate over each computational step:
 
 As we can see $\ket{B'}$ stores the carry of $A$ and $B$ and $\ket{O'}$ stores the sum of $A$ and $B$.
 
-\subsection{The Python3 implementation}
+\subsection{Implementing the Quantum Half Adder in Python}
 
 First we need to import some useful classes from the Qiskit library. \mintinline{python3}{QuantumCircuit} and \\
 \mintinline{python3}{QuantumRegister} will be used to create the Half-Adder circuit.
 
-\begin{listing}[ht]
+\begin{listing}[!ht]
     \centering
     \begin{minted}{python3}
         from qiskit import QuantumCircuit, QuantumRegister
@@ -154,7 +154,7 @@ First we need to import some useful classes from the Qiskit library. \mintinline
 After importing the initial classes we instantiate three object $A, B$ and $O$, which are all \\\mintinline{python3}|QuantumRegister|'s and
 one object which is a \mintinline{python3}|QuantumCircuit|.
 
-\begin{listing}[ht]
+\begin{listing}[!ht]
     \centering
     \begin{minted}{python3}
         a = QuantumRegister(1, name="A")
@@ -174,7 +174,7 @@ method of the \mintinline{python3}|QuantumCircuit| class.
 
 Putting it all together, we can implement the computational steps from Figure 5.3.
 
-\begin{listing}[ht]
+\begin{listing}[!ht]
     \centering
     \begin{minted}{python3}
         circuit.ccx(a, b, o)
@@ -182,3 +182,38 @@ Putting it all together, we can implement the computational steps from Figure 5.
     \end{minted}
     \caption{The computational steps of the Half-Adder in Python3}
 \end{listing}
+
+\newpage
+
+\subsection{Executing the Quantum Half Adder circuit}
+
+We shall execute the Quantum Half Adder circuit that we implemented above first using the Aer Simulator
+and then using a real Quantum Computer from the IBM Quantum Platform.
+
+We initialize the qubits $A$ and $B$ with the state $\ket{1}$ and $O$ with the state $\ket{0}$, thus we
+perform the half addition of $1+1$, and run the simulator. The results of the execution can be seen in
+Figure (5.4).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=.5]{images/5_Implementation/half_adder_local_result.pdf}
+    \caption{The result of executing the Quantum Half Adder circuit using the Aer Simulator}
+\end{figure}
+
+We can note that the result of the output $101=\ket{101}=\ket{AB'O'}=\ket{ASC_{out}}$. To read
+the output with the correct endianness we must invert it and we shall read it as $\ket{C_{out}SA}$.
+If we exclude qubit $A$ the result is $10_2$ which is $2$ in decimal.
+
+Running the circuit with the same initial states for $A,B$ and $O$ the IBM Osaka Quantum Computer
+gives the following result show in Figure (5.5).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=.5]{images/5_Implementation/half_adder_ibmq_result.pdf}
+    \caption{The result of executing the Quantum Half Adder circuit on the IBM Osaka Quantum Computer}
+\end{figure}
+
+We can clearly see that the Quantum Computer resulted in more outputs that the simulator. This is due
+to errors while executing the circuit for 4096 times. Although some times the Quantum Computer gave
+the wrong answers, the most probable output was the correct one ($101$), with a probability of
+$\sim 89.5\%$.

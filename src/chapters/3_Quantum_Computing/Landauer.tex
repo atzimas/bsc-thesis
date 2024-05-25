@@ -1,0 +1,22 @@
+\section{Landauer's Principle}
+
+When one bit of information is erased, the least amount of energy is expelled to the enviroment given by the
+following equation:
+
+\begin{equation}
+    E = k_BT\ln2
+\end{equation}
+
+where $k_B$ is the \textit{Boltzmann constant} and $T$ is the temperature of the enviroment. This is
+know as the \textit{Landauer's Principle}\cite{Landauer1961}. We can use this equation to calculate the total work produced
+by the computer by defining a Boolean function $f:\{0,1\}^m\to\{0,1\}^n$ that takes $m$-input bits and
+produces $n$-output bits - this funtion will represent all of the logical operations of the computer.
+If we consider that $m>>n$, this means that some bits are erased each time the computer carries a computation\cite{Marmorkos2024},
+then the total energy loss using equation (3.8) is:
+
+\begin{equation}
+    E_{total}=(m-n)k_BT\ln2
+\end{equation}
+
+Because Equation (3.9) gives the minimum amount of energy produced, the real amount of energy produced by
+modern computers is much higher that $E_{total}$.

@@ -1,1 +1,24 @@
 \chapter{Conclusions}
+
+We have shown that it is possible to construct a very basic Quantum Arithmetic Logic Unit but due to the considerable compexity of the proposed designs of
+the Quantum algorithms for each operation, the complete Unit is very susceptible to noise. We shall go over the details of each design.
+
+The Adder-Subtractor Quantum circuit was based on the proposed circuit by Richard P. Feynman \cite{Feynman1984} but the design itself needs a $n$-qubit
+output register to hold the computed output. There are other designs of Quantum adder circuits that use the \textit{Quantum Fourier Transform} or just 
+\textit{QFT} to encode one of the inputs to the \textit{Fourier basis} transforming it from the initial state $p$ to $\phi{p}$ and then by using the qubits
+from the other input perform conditional $R_z$ rotations on $\ket{p}$. This will compute $\ket{p+q}$ assuming the other input is $q$. Such a Quantum algorithm
+and circuit was designed by Draper \cite{Draper2000} and it is used by Qiskit. Lastly, the Draper adder uses only $2n$ qubit instead of $3n+2$ qubits of this work's
+Adder-Subtractor.
+
+The Multiplier Quantum circuit is probably the number one contender for bringing unnecessary complexity to the complete system. This design uses $2n^2+2n$ qubits
+which drives the complexity of the complete system by $n^2$. For a future work, a complete overhaul and change of the circuit is completely needed to drive down
+the complexity of the circuit, which in turn can drive down the compute time needed to run on a Quantum compute, something that did happen and pushed us to only execute
+parts of the complete design on real hardware instead of as a whole. A proposed alternative algorithm may be the Qiskit's own Multiplier Quantum circuit like the
+Ruiz-Perez et al. \cite{Ruiz_Perez_2017} design (which is also called the RGQFT Multiplier). In contrast, the RGQFT Multiplier uses only $3n$ qubits in total.
+
+Moreover, the NKO Comparator was a design implemented from previous work \cite{NKO2006}. The design is robust, concise and future work on the design may include adding
+more calculations of other statuses like: detecting and overflow from addition/subtraction.
+
+Lastly, for future work, the Quantum Arithmetic Logic Unit can be extended to include the operation of integer
+division. This was not implemented in this thesis due to the inherent complexity of the integer division algorithm\cite{Thapliyal2021},
+which requires a circuit that loops and compares values until a terminal state is reached.

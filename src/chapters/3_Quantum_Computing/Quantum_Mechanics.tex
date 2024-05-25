@@ -1,0 +1,91 @@
+\section{Quantum Mechanics for Quantum Computing}
+
+Before we begin to operate a quantum computer or make quantum circuits we have to discuss
+what are the underline laws that govern those systems.
+
+Quantum Mechanics is a mathematical framework that is used to create physical theories or
+to describe properties of physical systems. It is also a framework that helps physicists
+to describe nature at the microscopic level, something that Classical Mechanics failed to do.
+
+This mathematical framework has four \textit{axioms} that are used to interconnect the physical
+with the mathematical world.
+
+\subsection{The Axioms of Quantum Mechanics}
+\subsubsection{Axiom One: The State of a Quantum System}
+
+The state of a quantum system can be represented as a complex vector, which vector is in the
+complex Hilber space. The state of a quantum system is also called the \textit{state vector} of
+that quantum system. In quantum computing usually systems are \textit{two level systems}, that are systems
+that have two states (binary systems).
+
+The \textit{qubit} is the quantum equivalent of the classical bit - instead of storing classical information
+(zeros or ones) is stores quantum information expressed using some \textit{basis states}. The most frequent
+state base is the \textit{computational basis}. The computational basis describes two linearly seperable
+and orthogonal unitary vectors $\{\ket{0},\ket{1}\}\in\mathbb{H}^2$. With those two states we can encode
+information and process it using quantum gates. Physicaly these two state have to represent
+a physical state of the system. Classical computers use two voltage levels (+5V and +0V, for example), in 
+quantum computers we can use many physical properties of a quantum system like: the spin of an
+electron (up or down), the polarization of a photon (horizontal or vertical) or even the energy levels of an atom.
+
+A general state $\ket{\phi}$ of a system can be written as a superposition of the basis states $\ket{0}$ and $\ket{1}$:
+
+\begin{equation}
+    \ket{\phi} = a\ket{0} + b\ket{1} = \begin{bmatrix}
+        a\\
+        b
+    \end{bmatrix}
+\end{equation}
+
+where $a,b\in\mathbb{C}$ are the complex coefficients called the \textit{probability amplitudes} of
+the state vector $\ket{\phi}$. We can also notate them using the name of the state vector
+
+\begin{equation}
+    \ket{\phi} = \phi_0\ket{0} + \phi_1\ket{1} = \begin{bmatrix}
+        \phi_0\\
+        \phi_1
+    \end{bmatrix}
+\end{equation}
+
+\subsubsection{Axiom Two: Time Evolution of a Quantum System}
+
+The time evolution of a quantum system $\ket{\phi(t)}$ can be expresed by unitary operators
+of the form $U(t, t_0)$ as follows:
+
+\begin{equation}
+    \ket{\phi(t)} = U(t, t_0)\ket{\phi(t_0)}
+\end{equation}
+
+Also if an operator is hermitian ($A=A^\dag$) then the operator $U=e^{iA}$ is unitary because:
+
+\begin{equation}
+    UU^\dag=e^{iA}(e^{iA})^\dag=e^{iA}e^{-iA^\dag}=e^{iA}e^{-iA}=I
+\end{equation}
+
+\subsubsection{Axiom Three: Measurement}
+
+By now we can encode information and we can define its evolution in time, but it would be
+gratuitous if we could not measure the outcome of any computation. Thus the third axiom states
+that to make a measurement on a quantum system $\ket{\phi}\in\mathbb{H}$, defined using the
+basis state $\ket{i}\in\mathbb{H}$, then a measurement can occur on $\ket{\phi}=\sum_{i}^{n}a_i\ket{i}$.
+The outcome is one of the states $\ket{i}$ of the system with a probability to be in that state $|a_i|^2$.
+After the outcome, the system \textit{collapses} to the that state $\ket{i}$.
+
+\subsubsection{Axiom Four: Composite Systems}
+
+We can combine $n$ independent quantum systems that are expressed as state vectors $\ket{\phi_i}\in\mathbb{H}_i$ where
+$i=0,1,\hdots,n$ as a \textit{composite quantum system} $\ket{\phi}$. This can be done by applying the tensor product
+to each of the independent systems
+
+\begin{equation}
+    \ket{\phi} = \ket{\phi_0}\otimes\ket{\phi_1}\otimes\hdots\otimes\ket{\phi_n}=\ket{\phi_0\phi_1\hdots\phi_n}
+\end{equation}
+
+That state vector $\ket{\phi}$ is a complex vector in the complex Hilber space
+
+\begin{equation}
+    \mathbb{H}=\mathbb{H}_0\otimes\mathbb{H}_1\otimes\hdots\mathbb{H}_n
+\end{equation}
+
+As we mentioned previously, in Quantum Computing, we study two-level systems - systems with two basis states.
+This means that the composite system $\ket{\phi}$ of $n$ independent two-level quantum systems
+is in a complex Hilbert space of $2^n$ dimensions.

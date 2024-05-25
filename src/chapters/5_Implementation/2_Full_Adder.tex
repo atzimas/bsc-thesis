@@ -82,7 +82,7 @@ Now we can edit Figure 5.5 by using the $QHA$.
     \caption{The combinational quantum Full-Adder made with two Quantum Half-Adders}
 \end{figure}
 
-\subsection{The Python3 implementation}
+\subsection{Implementing the Quantum Full Adder in Python}
 
 Just like the Half-Adder implementation, we need to import the two basic classes: \\\mintinline{python3}|QuantumCircuit| and
 \mintinline{python3}|QuantumRegister|. We initialize the \mintinline{python3}|circuit| object with the appropriate 1-qubit
@@ -187,7 +187,7 @@ We can now use the Full-Adder gate to implement much bigger quantum circuits wit
 this design is not particulary efficient as it uses one \say{garbage} qubit \cite{Feynman1984}. For the sake of simplicity
 we are going to use this circuit as it is very straight-forward to understand.
 
-\subsection{Extending the circuit to $n$-qubits}
+\subsection{Extending the circuit to n-qubits}
 
 The Full-Adder circuit in subsection 5.2.2 is not very useful as it can only compute the sum of 1-qubit registers. In this section
 we are going to use all of the previous knowledge to create a Full-Adder circuit that can compute the sum of $n$-qubit register inputs.

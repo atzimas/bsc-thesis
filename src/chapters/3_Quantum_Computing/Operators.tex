@@ -1,0 +1,100 @@
+\section{Operators}
+
+In Quantum Mechanics, operators are mathematical objects that act on vectors and transform them.
+The action of an operator, let $\hat{A}$ be an operator and $\ket{\phi}$ a qubit, is a expressed as:
+
+\begin{equation}
+    \hat{A}\ket{\phi}=\ket{\phi'}
+\end{equation}
+
+There are also defined properties for operators. Two operators $\hat{A},\hat{B}$ are equal when:
+
+\begin{equation}
+    \hat{A}\ket{\phi}=\hat{B}\ket{\phi}
+\end{equation}
+
+Addition between two operators $\hat{A},\hat{B}$ is defined as:
+
+\begin{equation}
+    (\hat{A}+\hat{B})\ket{\phi}=\hat{A}\ket{\phi}+\hat{B}\ket{\phi},\forall\ket{\phi}\in\mathbb{H}^n
+\end{equation}
+
+The product of two operators $\hat{A},\hat{B}$ defines the order of operations that act on a certain vector $\ket{\phi}$ as:
+
+\begin{equation}
+    \hat{A}\hat{B}\ket{\phi}=\hat{A}(\hat{B}\ket{\phi})=\hat{A}\ket{\phi'}
+\end{equation}
+
+We should note that the addition of two operators is commutative $\hat{A}+\hat{B}=\hat{B}+\hat{A}$ but that
+does not apply in general to the product of two operators $\hat{A}\hat{B}\neq\hat{B}\hat{A}$.
+
+\section{Matrices of Operators}
+
+It is often simpler to represent the transformations of an operator using a matrix representation. Each element of that
+matrix represents the transformation on a specific basis. For example, let $\hat{A}$ be an operator and $\{\ket{i}\},i=1,2,\hdots n$
+be a basis in a Hilbert space $\mathbb{H}^n$, the operator can be represented as $n\times n$ matrix:
+
+\begin{equation}
+    \hat{A}=\begin{bmatrix}
+        A_{11} & A_{12} & \hdots & A_{1n}\\
+        A_{21} & A_{22} & \hdots & A_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        A_{n1} & A_{n2} & \hdots & A_{nn}\\
+    \end{bmatrix}
+\end{equation}
+
+There are many operators that are useful in Quantum Mechanics (and in extension also in Quantum Computing).
+
+For example, the Identity operator, notated with an $\hat{I}$, is an operator that when applied on any vector $\ket{\phi}$
+lefts it un-transformed:
+
+\begin{equation}
+    \hat{I}\ket{\phi}=\ket{\phi}
+\end{equation}
+
+and is represented as:
+
+\begin{equation}
+    \hat{I}=\begin{bmatrix}
+        1 & 0 & \hdots & 0\\
+        0 & 1 & \hdots & 0\\
+        \vdots & \vdots & \ddots & \vdots\\
+        0 & 0 & \hdots & 1\\
+    \end{bmatrix}
+\end{equation}
+
+\section{Hermitian Conjugate}
+
+Let $\ket{u}$ be a state vector of a quantum system and $\hat{A}$ be an operator that operates on $\ket{u}$:
+
+\begin{equation}
+    \hat{A}\ket{u} = \ket{u'}
+\end{equation}
+
+The same logic can be applied for its bra counterpart:
+
+\begin{equation}
+    \bra{u}\hat{A}^\dag = \bra{u'}
+\end{equation}
+
+where $\hat{A}^\dag$ is the \textit{Hermitian conjugate} of the operator $\hat{A}$ - its an operator
+that when operated on $\bra{u}$ results in $\bra{u'}$ just like when its non-Hermitian conjugate
+$\hat{A}$ operates on $\ket{u}$ and results in $\ket{u'}$.
+
+Thus, when we take the conjugate of $\hat{A}^\dag$ then:
+
+\begin{equation}
+    (\hat{A}^\dag)^\dag=\hat{A}
+\end{equation}
+
+The matrix of $\hat{A}^\dag$ is defined as the \textit{conjugate transpose} matrix of the operator $\hat{A}$:
+
+\begin{equation}
+    \hat{A}^\dag=(\hat{A}^T)^*
+\end{equation}
+
+where $\hat{A}^T$ is the \textit{transpose} matrix of $\hat{A}$ and it is defined as:
+
+\begin{equation}
+    \hat{A}_{ij}^T=\hat{A}_{ji}
+\end{equation}

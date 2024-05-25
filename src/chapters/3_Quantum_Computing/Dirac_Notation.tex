@@ -1,0 +1,104 @@
+\section{The Dirac Notation}
+
+We already are familiar with the standard vector notation. Let $\vec{v}$ be a $n$-dimensional vector
+whom's elements are real numbers. This is notated as:
+
+\begin{equation}
+    \vec{v}=\sum_{i=1}^{n}v_i\hat{d_i}\in\mathbb{R}^n
+\end{equation}
+
+where $\hat{d_i}$ is the unit vector of the $i$-th dimension. For a three-dimensional
+real space the vector $\vec{v}$ would be notated as:
+
+\begin{equation}
+    \vec{v}=v_1\hat{d_1}+v_2\hat{d_2}+v_3\hat{d_3}\in\mathbb{R}^3
+\end{equation}
+
+The notation is similar for elements in the complex space $\mathbb{C}^n$. The only real difference
+is the nomenclature where vectors that are in that space are called \textit{complex vectors}.
+
+We can also notate vectors as a $n\times1$ column matrix, where each element of that matrix
+is the vector's corresponding element:
+
+\begin{equation}
+    \vec{v}=\begin{bmatrix}
+        v_1\\
+        v_2\\
+        \vdots\\
+        v_n
+    \end{bmatrix}\in\mathbb{R}^n
+\end{equation}
+
+In Quantum Mechanics, vectors are represented using a different kind of notation, the \textit{Dirac notation}
+or \textit{bra-ket notation}. This notation was introduced by the American physicist and electrical engineer Paul
+Dirac in 1939 \cite{Dirac1939}. This introduced two new symbols: the \textit{bra} (symbolised with a $\bra{}$)
+which represents a vector quantity whose elements are a vertical $1\times n$ matrix, and the \textit{ket}
+(symbolised with a $\ket{}$) which represents a vector quantity whose elements are a horizontal $n\times1$ matrix.
+We also note that in Quantum Mechanics all vectors (and their elements) are in a complex space. For example,
+let $\vec{v}$ be a vector in the complex space $\mathbb{V}^n$, we would notate it in Dirac notation as:
+
+\begin{equation}
+    \ket{v}=\begin{bmatrix}
+        v_1\\
+        v_2\\
+        \vdots\\
+        v_n
+    \end{bmatrix}
+    \text{, where }v_i\in\mathbb{C},\ket{v}\in\mathbb{V}^n
+\end{equation}
+This is also read as \say{ket $v$}. Note that the arrow symbol ($\rightarrow$) on top of label-name of the vector
+$\vec{v}$ is absent with this notation.
+
+Subsequently, the \say{bra $v$} is the \textit{conjugate transpose} or the \textit{Hermitian conjugate} (symbolised with
+$\dag$ and pronounced as \say{dagger}) of the $\ket{v}$
+
+\begin{equation}
+    \bra{v}=\begin{bmatrix}
+        v_1^*&v_2^*&\hdots&v_n^*
+    \end{bmatrix}=
+    \begin{bmatrix}
+        v_1\\
+        v_2\\
+        \vdots
+        v_n
+    \end{bmatrix}^\dag
+\end{equation}
+
+\subsection{Inner Product}
+
+The inner product of two complex vectors $\ket{a},\ket{b}\in\mathbb{V}^n$ is defined as
+
+\begin{equation}
+    \braket{a|b}=\begin{bmatrix}
+        a_1^*&a_2^*\hdots a_n^*
+    \end{bmatrix}\times
+    \begin{bmatrix}
+        b_1\\
+        b_2\\
+        \vdots\\
+        b_n
+    \end{bmatrix}=
+    \sum_{i=1}^{n}a_i^*b_i=c\text{, where }a_i,b_i,c\in\mathbb{C}
+\end{equation}
+
+There are also three properties defined for the inner product:
+
+\begin{equation}
+    \braket{a|b}=\braket{b|a}^*
+\end{equation}
+
+\begin{equation}
+    \braket{a|\alpha b+\beta c}=\alpha\braket{a|b}+\beta\braket{a|c}\text{, where }\alpha,\beta\in\mathbb{C}
+\end{equation}
+
+\begin{equation}
+    \braket{\alpha a+\beta c|b}=\alpha^*\braket{a|b}+\beta^*\braket{c|a}\text{, where }\alpha,\beta\in\mathbb{C}
+\end{equation}
+
+The inner product of two vectors $\ket{a},\ket{b}\in\mathbb{V}^n$ is zero when the vectors are orthogonal to each other.
+
+\subsection{Hilbert Space}
+
+When in an abstract complex vector space $\mathbb{V}^n$ the operation of the inner product is defined then
+that space is also called a \textit{Hilbert space}. In Quantum Computing, every vector that represents the
+state of the quantum system is a vector in Hilbert space.

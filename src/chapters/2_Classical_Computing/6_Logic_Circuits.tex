@@ -1,6 +1,6 @@
 \section{Logic Circuits}
 
-We can use the logic gate introduced in section 2.5 to create \textit{logic circuits}
+We can use the logic gates introduced in section 2.5 to create \textit{logic circuits}
 - circuits that compute some Boolean complex function. For example, we can produce
 a logic circuit that computes the sum of two bits.
 
@@ -12,11 +12,7 @@ As we have noted in section 2.2 the rules of addition are:
 \end{enumerate}
 
 Note that the sum $S$ can be produced by the XOR gate and the carry $C$ with the AND gate. Putting those
-two components together we get the following circuit. This digtal logic circuit is called \textit{half adder}.
-Why is it called the \textit{half} adder? This is because this circuit is not aware of any previous carry, thus
-not a \textit{complete} circuit.
-
-As we have seen from section 2.2 carrying is very important to the calculation of the sum.
+two components together we get the following circuit:
 
 \begin{figure}[ht]
     \centering
@@ -39,7 +35,7 @@ As we have seen from section 2.2 carrying is very important to the calculation o
 \begin{table}[ht]
     \centering
     \begin{tabular}{cc|cc}
-        $a$ & $b$ & $S$ & $C$ \\
+        $A$ & $B$ & $S$ & $C_{out}$ \\
         \hline
         $0$ & $0$ & $0$ & $0$ \\
         $0$ & $1$ & $1$ & $0$ \\
@@ -49,16 +45,21 @@ As we have seen from section 2.2 carrying is very important to the calculation o
     \caption{The truth table of the half adder}
 \end{table}
 
+This digtal logic circuit is called \textit{half adder}.
+Why is it called the \textit{half} adder? This is because this circuit is not aware of any previous carry, thus
+it is not a \textit{complete} circuit. As we have seen from section 2.2 carrying is very important to the calculation
+of the sum.
+
 The circuit that does take into account for a previous carry bit is called the \textit{full adder}.
 The previous carry is called the \textit{carry-in} bit and it's the third input for this circuit.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/5_Implementation/classical_fulladder_diagram.pdf}
+    \includegraphics[scale=.7]{images/5_Implementation/classical_fulladder_diagram.pdf}
     \caption{The logic circuit of the full adder using two half adders}
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}[!ht]
     \centering
     \begin{tabular}{ccc|cc}
         $a$ & $b$ & $C_{in}$ & $S$ & $C_{out}$ \\
@@ -75,9 +76,11 @@ The previous carry is called the \textit{carry-in} bit and it's the third input 
     \caption{The truth table of the full adder}
 \end{table}
 
+\newpage
+
 We can see by the diagrams that the full adder circuit can be made out of
 two half adder circuits. These kind of circuits, that are made from other
-simple circuit, are called \textit{combinational circuits}.
+simple circuits, are called \textit{combinational circuits}.
 
 By placing full adders in sequence we can make another combinational circuit
 called the \textit{ripple carry adder}. This circuit can compute the sum
@@ -85,7 +88,11 @@ of $n$-bit inputs. It's called a \textit{ripple} carry adder because in order
 to compute the $n$-th sum bit the circuit must first compute the $n-1$-th
 sum bit thus some latency is present on the circuit. We must note at this point
 that there are other better implementations of $n$-bit adders but it is out of
-the scope of this work.
+the scope of this work. In figure (2.7) we can see an example of a 4-bit
+ripple carry adder which computes, for each input bit $A_i$, $B_i$ and $C_{in_i}$,
+the sum bit $S_i$ and the carry-out bit and passes it to the next full-adder block as
+the carry-in bit $C_{in_{i+1}}$. The logic continues until the circuit computes the sum bits for
+all the input bits.
 
 \begin{figure}[ht]
     \centering

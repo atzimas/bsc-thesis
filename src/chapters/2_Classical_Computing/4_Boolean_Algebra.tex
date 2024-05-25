@@ -16,8 +16,7 @@ either \textit{true} or \textit{false}. It defines three basic operations: negat
     \lnot A
 \end{equation}
 
-These operators are also symbolised as $\cdot$ (conjunction), $+$ (disjunction) and $'$ (negation). The
-rules of operations for each operator is described in the following \textit{truth tables}. A truth
+The rules of operations for each operator is described in the following \textit{truth tables}. A truth
 table is a table that displays all the possible binary values of a \textit{boolean variable}
 and all the possible outputs. These operators are most commonly mapped to logic functions:
 AND (conjunction), OR (disjunction) and NOT (negation), which can take either two input variables, for
@@ -25,7 +24,7 @@ the first two, or one input variable, for the last one. These function names are
 the operation in the circuit model (see section 2.5).
 
 The AND logic function states that the output will be \textit{true} (or logical 1) if and only if
-both input variables are in the logical 1 state.
+both input variables are in the logical state 1.
 \begin{table}[ht]
     \centering
     \begin{tabular}{cc|c}
@@ -40,7 +39,7 @@ both input variables are in the logical 1 state.
 \end{table}
 
 The OR logic function states that the output will be \textit{true} if both or at the very least
-one of the input variables are in the logical 1 state.
+one of the input variables are in the logical state 1.
 \begin{table}[ht]
     \centering
     \begin{tabular}{cc|c}
@@ -54,8 +53,8 @@ one of the input variables are in the logical 1 state.
     \caption{The truth table for the disjunction operator}
 \end{table}
 
-The NOT logic function inverts the state of the input variable - if the input is one the logical
-state 0 then it is inverted to the logical 1 state and vice versa.
+The NOT logic function inverts the state of the input variable - if the input is in the logical state 0
+then it is inverted to the logical state 1 and vice versa.
 \begin{table}[ht]
     \centering
     \begin{tabular}{c|c}
@@ -84,7 +83,7 @@ The NAND and NOR functions are self explanatory, they are just the negated AND a
     \end{tabular}
     \caption{The truth table for the NAND function}
 \end{table}
-
+\hspace{1cm}
 \begin{table}[ht]
     \centering
     \begin{tabular}{cc|c}

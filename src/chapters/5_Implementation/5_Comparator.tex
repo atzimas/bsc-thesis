@@ -147,7 +147,7 @@ Finally, we uncompute iteratively using the $S^\dag$ gate.
     \caption{The diagram of the quantum Integer Comparator circuit}
 \end{figure}
 
-\subsection{The Python3 Implementation}
+\subsection{Implementing the NKO Comparator in Python}
 
 To implement the comparator circuit we need to construct the $S$ and $S^\dag$ gates.
 
@@ -168,7 +168,7 @@ To implement the comparator circuit we need to construct the $S$ and $S^\dag$ ga
         sdag.cx(0, 2)
         sdag = sdag.to_gate()
     \end{minted}
-    \caption{}
+    \caption{Constructing the $S$ and $S^\dag$ gates using Qiskit}
 \end{listing}
 
 After that we init the main circuit. The size of the registers are fixed to $n=3$, although it can
@@ -186,7 +186,7 @@ be set to any positive integer. We also include some ancilla qubits.
 
         circuit = QuantumCircuit(a, b, anc, eq, gl, name="NKOComparator")
     \end{minted}
-    \caption{}
+    \caption{Instantiating the NKO Comparator Quantum circuit}
 \end{listing}
 
 \newpage
@@ -201,7 +201,7 @@ the difference of $A-B$ and store it to $B$.
         for i in range(n):
             circuit.append(s, (anc[i], a[i], b[i], anc[i+1]))
     \end{minted}
-    \caption{}
+    \caption{Computing the difference of $A$ and $B$ on the NKO Comparator Quantum circuit}
 \end{listing}
 
 After we computed the difference, check if all the qubits of register $B$ are zero.
@@ -216,7 +216,7 @@ the same number thus $A$ and $B$ are equal.
         from qiskit.circuit.library import MCXGate
         circuit.append(MCXGate(n, ctrl_state=0), (b[:] + eq[:]))
     \end{minted}
-    \caption{}
+    \caption{Appending a Multi-Controlled X Gate with inverted logic control qubits onto the NKO Comparator Quantum circuit to logically test $A = B$}
 \end{listing}
 
 To check if $A$ is greater or less than $B$, we can check the sign qubit of the difference. This is easily
@@ -227,7 +227,7 @@ done by applying a CNOT gate to most-significant qubit of the difference.
     \begin{minted}{python3}
         circuit.cx(anc[-1], geq)
     \end{minted}
-    \caption{}
+    \caption{Checking the MSB of the difference of $A$ and $B$ to logically test $A @> B$}
 \end{listing}
 
 \newpage
@@ -240,7 +240,7 @@ Finally, we un-compute by applying the $S^\dag$ gate to the circuit in reverse.
         for i in reversed(range(n)):
             circuit.append(sdag, (anc[i], a[i], b[i], anc[i+1]))
     \end{minted}
-    \caption{}
+    \caption{Iteratively un-computing $A$ and $B$ to restore the Quantum registers to their initial state}
 \end{listing}
 
 \begin{listing}[ht]
@@ -284,4 +284,5 @@ Finally, we un-compute by applying the $S^\dag$ gate to the circuit in reverse.
         for i in reversed(range(n)):
             circuit.append(sdag, (anc[i], a[i], b[i], anc[i+1]))
     \end{minted}
+    \caption{The complete code of the NKO Comparator Quantum circuit}
 \end{listing}

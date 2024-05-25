@@ -11,7 +11,7 @@ operations - the AND, OR and NOT functions - using the \textit{circuit model} of
 computation are treated as circuits that accomplish the same operation.
 
 The AND gate is a digital gate that takes two 1-bit inputs and outputs their logical
-conjunction. Thus the truth table and operator are analogous to its Boolean counterpart.
+conjunction (see Figure (2.1)). Thus the truth table and operator are analogous to its Boolean counterpart.
 
 \begin{figure}[ht]
     \centering
@@ -24,8 +24,10 @@ conjunction. Thus the truth table and operator are analogous to its Boolean coun
     \caption{The circuit symbol for the AND function}
 \end{figure}
 
+\newpage
+
 The OR gate is a digital gate that takes two 1-bit inputs and outputs their logical
-disjunction. Again the truth table and operator are analogous to its Boolean counterpart.
+disjunction (see Figure (2.2)). Again the truth table and operator are analogous to its Boolean counterpart.
 
 \begin{figure}[ht]
     \centering
@@ -38,7 +40,7 @@ disjunction. Again the truth table and operator are analogous to its Boolean cou
     \caption{The circuit symbol for the OR function}
 \end{figure}
 
-Lastly, the NOT gate takes a 1-bit input and outputs its logical negation.
+Lastly, the NOT gate takes a 1-bit input and outputs its logical negation (see Figure (2.3)).
 
 \begin{figure}[ht]
     \centering
@@ -47,13 +49,13 @@ Lastly, the NOT gate takes a 1-bit input and outputs its logical negation.
         \draw (p.in) node[left] {$a$};
         \draw (p.out) node[right] {$\lnot a = a'$};
     \end{circuitikz}
-    \caption{The circuit symbol for the AND function}
+    \caption{The circuit symbol for the NOT function}
 \end{figure}
 
 We would like to point out that there are also digital logic gates that symbolise the
-other compount logic functions - NAND, NOR, XOR and XNOR.
+other compount logic functions - NAND, NOR, XOR and XNOR (see Figure (2.4)).
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
     \begin{subfigure}{0.3\textwidth}
         \centering
@@ -65,6 +67,7 @@ other compount logic functions - NAND, NOR, XOR and XNOR.
         \end{circuitikz}
         \caption{}
     \end{subfigure}
+    \hspace{1cm}
     \begin{subfigure}{0.3\textwidth}
         \centering
         \begin{circuitikz}
@@ -75,6 +78,8 @@ other compount logic functions - NAND, NOR, XOR and XNOR.
         \end{circuitikz}
         \caption{}
     \end{subfigure}
+    \vspace{1cm}
+    \\
     \begin{subfigure}{0.3\textwidth}
         \centering
         \begin{circuitikz}
@@ -85,6 +90,7 @@ other compount logic functions - NAND, NOR, XOR and XNOR.
         \end{circuitikz}
         \caption{}
     \end{subfigure}
+    \hspace{1cm}
     \begin{subfigure}{0.3\textwidth}
         \centering
         \begin{circuitikz}

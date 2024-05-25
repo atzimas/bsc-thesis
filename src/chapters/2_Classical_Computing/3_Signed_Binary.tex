@@ -8,7 +8,7 @@ encoding scheme.
 
 One of the most simple encoding schemes to represent signed numbers
 is called the \textit{signed-magnitude} representation. In this
-scheme, the MSB is considered to be the \textit{sign}; if that
+scheme, the MSB (\textit{most-significant bit}) is considered to be the \textit{sign}; if that
 bit is zero then the number is considered a positive integer
 otherwise it's a negative integer. Binary numbers that do
 not consider this scheme are called \textit{unsigned binary numbers}.
@@ -33,10 +33,8 @@ not consider this scheme are called \textit{unsigned binary numbers}.
     \caption{The table for 4-bit signed integers using the signed-magnitude representation}
 \end{table}
 
-Note that in this scheme there is a negative and positive zero.
-This is not ideal for computer circuits that do binary arithmetic.
-It is also not an economical way to store numeral information
-due to the fact this fact.
+Note that in this scheme there is a negative and positive zero. This is not ideal or economical 
+and thus, this representation scheme is not used when designing computer circuits.
 
 By using the \textit{signed-complement} representation scheme
 signed integers are represented as their complement. There
@@ -71,6 +69,9 @@ the two's complement of $-12_{10}$ is obtained by:
     \item Add one: $10011 + 1 = 10100$
 \end{enumerate}
 
+We can see in the Table (2.5) the one's and two's complement of each
+integer decimal that can be represented using four bits of information.
+
 \begin{table}[ht]
     \centering
     \begin{tabular}{c|c|c}
@@ -92,9 +93,10 @@ the two's complement of $-12_{10}$ is obtained by:
 \end{table}
 
 Two's complement is used universaly by computers becuase the representation simplifies the 
-circuitry that implements arithmetic operations. Subtraction for example can be simplified
-as the addition of one binary term and the two's complement of the second one. For example,
-the difference of $1101_2 - 1011_2$ can be computed as follows:
+circuitry that implements arithmetic operations. Subtraction, for example, of two binary numbers $A-B$ can be
+simplified as $A+B'+1$ where $B'$ is the one's complement of $B$.
+
+For example, the difference of $1101_2 - 1011_2$ can be computed as follows:
 
 \begin{enumerate}
     \item Take the two's complement of the second term: $1011_2\rightarrow0100_2 + 1 = 0101_2$
