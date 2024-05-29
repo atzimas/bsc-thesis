@@ -10,3 +10,4 @@ main.pdf
 _minted-main/
 src/scripts
 *env
+src/presentation/*.pdf
