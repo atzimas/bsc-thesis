@@ -15,7 +15,7 @@ header-includes:
     * 2nd Axiom: The time evolution of quantum system.
     $$\ket{\psi(t)}=U(t,t_0)\ket{\psi(t_0)}$$
     * 3rd Axiom: Measurements.
-    $$P(i)=\lvert \alpha_i \lvert^2\text{ where }\{\ket{i}\}\in\mathbb{H}$$
+    $$P(i)=|\alpha_i|^2\text{ where }\{\ket{i}\}\in\mathbb{H}$$
     * 4th Axiom: Compount quantum systems.
     $$\ket{\psi} = \ket{\psi_1}\otimes\hdots\ket{\psi_n}=\ket{\psi_1\hdots\psi_n}\text{ where }\psi_n\in\mathbb{H}^{\otimes{n}}$$
 
@@ -46,7 +46,7 @@ $$A=\begin{bmatrix}
     \vdots & \vdots & \ddots & \vdots \\
     A_{i1} & A_{i2} & \hdots & A_{ij} \\
 \end{bmatrix}$$
-* Example: The *Identity* operator $I$:
+* Example; The *Identity* operator $I$:
 $$
 I =\begin{bmatrix}
     1 & 0 & \hdots & 0 \\
@@ -61,5 +61,30 @@ $$
 * The *computational basis* vectors: $\ket{0}=\begin{bmatrix}1\\0\end{bmatrix}$ and $\ket{1}=\begin{bmatrix}0\\1\end{bmatrix}$
 * $\ket{q}=q_1\ket{0}+q_2\ket{1}$
 
-# The Qubit
-![Bloch's sphere](images/bloch_sphere.pdf){ width=80%, height=80% }
+![Bloch's sphere](images/bloch_sphere.pdf){ width=40%, height=40% }
+
+# Quantum Gates
+## Single-qubit Gates
+* X gate: $X=\begin{bmatrix}0&1\\1&0\end{bmatrix}$
+
+![The X gate diagram](images/x_gate.pdf)
+
+* Hadamard gate: $H=\frac{1}{\sqrt{2}}\begin{bmatrix}1&1\\1&-1\end{bmatrix}$
+
+![The Hadamard gate diagram](images/hadamard_gate.pdf)
+
+# Quantum Gates
+## Multi-qubit Gates
+* Controlled-X gate: $CX=\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&1\\0&0&1&0\\\end{bmatrix}$
+
+![The Controlled-X gate diagram](images/cx_gate.pdf)
+
+# Quantum Gates
+## Multi-qubit Gates
+* Controlled-CX gate
+
+![The Controlled-CX gate diagram](images/ccx_gate.pdf)
+
+* Swap gate:
+
+![The Swap gate diagram](images/swap_gate.pdf)
