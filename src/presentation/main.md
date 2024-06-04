@@ -88,3 +88,47 @@ $$
 * Swap gate:
 
 ![The Swap gate diagram](images/swap_gate.pdf)
+
+# Quantum Circuits
+
+![The Quantum Half Adder circuit](images/half_adder.pdf)
+
+# The Arithmetic Logic Unit
+
+![The Arithmetic Logic Unit diagram](images/alu.pdf){ width=50%, height=50% }
+
+# Implementing the Quantum ALU
+## The Adder-Subtractor
+
+![The Quantum Full Adder circuit](images/full_adder.pdf)
+
+# Implementing the Quantum ALU
+## The Adder-Subtractor (cont.)
+
+$$
+A-B=A+(\lnot B)+1
+$$
+
+![The Quantum Adder-Subtractor circuit](images/quantum_adder_subtractor.pdf){ width=80%, height=65% }
+
+# Implementing the Quantum ALU
+## The Integer Multiplier
+
+![An example of binary multiplication of 2-bit "wide" integers](images/multiplication_example.pdf){ width=20%, height=20%}
+
+![The Integer Multiplier Circuit](images/multiplier.pdf){ width=50%, height=40%}
+
+# Implementing the Quantum ALU
+## The Integer Comparator
+
+![The Integer Comparator circuit](images/nko_comparator.pdf)
+
+# The Complete Picture
+## The Operation Code (Opcode) Table
+
+![](images/opcode_table.pdf)
+
+# The Complete Picture
+## The complete Quantum ALU
+
+![The complete circuit of the Quantum ALU](images/qalu_complete.pdf)
