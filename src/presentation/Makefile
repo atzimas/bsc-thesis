@@ -7,7 +7,7 @@ TARGET	:= presentation
 all: pdf pptx
 
 pdf:
-	$(PDOC) -t beamer $(SRCS_MD) -o $(TARGET).$@
+	$(PDOC) -t beamer --slide-level=2 $(SRCS_MD) -o $(TARGET).$@
 
 pptx:
 	$(PDOC) $(SRCS_MD) -o $(TARGET).$@
