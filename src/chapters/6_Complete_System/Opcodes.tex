@@ -1,0 +1,24 @@
+\section{The Quantum ALU's Opcodes}
+
+We had introduced four different Quantum circuits in the previous chapters:
+\begin{enumerate}
+    \item a Quantum Adder-Subtractor,
+    \item a Quantum Multiplier and
+    \item a Quantum Comparator
+\end{enumerate}
+with each Quantum circuit giving us the operations of: addition, subtraction, multiplication and magnitued comparison.
+We can encode these four operations using a bitstring of length $n=2$ because $log_24=2$. The mapping of each opcode with
+its corresponding operation and Quantum circuit can be seen at the table below.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{c|c|c}
+        Opcode & Operation & Quantum circuit \\
+        \hline
+        \verb|00| & Addition & $QAS$ (Addition mode) \\
+        \verb|01| & Subtraction & $QAS$ (Subtraction mode) \\
+        \verb|10| & Multiplication & $QMUL$ \\
+        \verb|11| & Magnitude Comparison & $QCMP_{NKO}$ \\
+    \end{tabular}
+    \caption{The Opcode table of the Quantum ALU}
+\end{table}

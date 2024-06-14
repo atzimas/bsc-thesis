@@ -312,11 +312,11 @@ for i in reversed(range(2)):
 
 ## Experimental Results on a Real Quantum Computer
 ### Adder-Subtractor Sub-Unit
-![The probability count of adding $3+2$ using the Quantum Arithmetic Logic Unit, executed on the Aer Simulator](images/adder_subtractor_aer_result.pdf){ width=60%, height=60% }
+![The probability count of adding $3-2$ using the Quantum Arithmetic Logic Unit, executed on the Aer Simulator](images/adder_subtractor_aer_result.pdf){ width=60%, height=60% }
 
 ## Experimental Results on a Real Quantum Computer
 ### Adder-Subtractor Sub-Unit
-![The probability counts of adding $3+2$ using the Quantum Arithmetic Logic Unit, executed on the IBM Osaka Quantum Computer](images/adder_subtractor_ibmq_result.pdf){ width=60%, height=60% }
+![The probability counts of adding $3-2$ using the Quantum Arithmetic Logic Unit, executed on the IBM Osaka Quantum Computer](images/adder_subtractor_ibmq_result.pdf){ width=60%, height=60% }
 
 ## Experimental Results on a Real Quantum Computer
 ### Integer Multiplier Sub-Unit

@@ -45,7 +45,7 @@ by using one \say{garbage} qubit to store the conjunction of the two conrtol qub
 need $n^2$ qubits to store the partial products of two $n$-qubit inputs.
 
 As always we initialize the circuit with the two 2-qubit input registers $A$ and $B$. We also
-include in our circuit the $2n^2$-qubit auxillary quantum register.
+include in our circuit the $2n^2$-qubit output quantum register.
 
 \begin{listing}[ht]
     \centering
@@ -55,9 +55,9 @@ include in our circuit the $2n^2$-qubit auxillary quantum register.
         n = 2
         a = QuantumRegister(n, name="A")
         b = QuantumRegister(n, name="B")
-        aux = QuantumRegister(2*n**2, name="aux")
+        out = QuantumRegister(2*n**2, name="out")
 
-        circuit = QuantumCircuit(a, b, aux)
+        circuit = QuantumCircuit(a, b, out)
     \end{minted}
     \caption{Initialization of the quantum Multiplier circuit}
 \end{listing}
@@ -71,7 +71,7 @@ qubit-pair $A_iB_j$.
         k = 0
         for i in range(n):
             for j in range(n):
-                circuit.cx(a[i], b[j], aux[k])
+                circuit.cx(a[i], b[j], out[k])
                 k += 1
     \end{minted}
     \caption{Computing the partial-products for the quantum Multiplier circuit}
@@ -84,16 +84,16 @@ but we have to be careful as to which pair of inputs we supply the $QFA$s.
 \begin{listing}[ht]
     \centering
     \begin{minted}{python3}
-        circuit.append(qfa, (aux[1], aux[2], aux[4], aux[5]))
-        circuit.append(qfa, (aux[3], aux[5], aux[6], aux[7]))
+        circuit.append(qfa, (out[1], out[2], out[4], out[5]))
+        circuit.append(qfa, (out[3], out[5], out[6], out[7]))
     \end{minted}
     \caption{Summing the partial-products to compute the product of $A\times B$}
 \end{listing}
 
 To produce the products we need to compute the sum of $P_1+P_2$. This in-turn will produce a sum and a carry-out,
 $P_1$ and $C_{out_0}$. The $C_{out_0}$ will be used for the next addition with $P_3$. Finally, after the last
-addition we have computed the product of $A \times B$. The output is stored in qubits $P_0$, $Out_0$, $Out_2$ and $Out_3$,
-with $Out_2$ be the most-significant qubit of the product.
+addition we have computed the product of $A \times B$. The output is stored in qubits $Out_0$, $Out_4$, $Out_6$ and
+$Out_7$, with $Out_7$ be the most-significant qubit of the product.
 
 \begin{figure}[ht]
     \centering
