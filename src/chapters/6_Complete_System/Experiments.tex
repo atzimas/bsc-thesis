@@ -1,6 +1,6 @@
 \newpage
 \section{Experimental Results on Simulators and Quantum Computers}
-\subsection{Testing the Addition and Subtraction operations on the Aer Simulator and on a real Quantum Computer}
+\subsection{c}
 
 We will now demonstrate all of the operations of the Quantum ALU starting with addition and subtraction. Before executing any arithmetic and logic 
 operation we have to initialize the Opcode register with the appropriate opcode (see Table 6.1).
@@ -24,7 +24,7 @@ In Figure (6.3) we can see this even more clearly (we omitted the five leading z
 \begin{figure}[!ht]
         \centering
         \includegraphics[scale=0.7]{images/6_Complete_System/adder_subtractor_aer_result.pdf}
-        \caption{The histogram of the possible values of the Output register when the Quantum ALU performed an addition with A=3 and B=2 on the Aer Simulator}
+        \caption{The histogram of the possible values of the Output register when the Quantum ALU performed an addition with A=3 (11) and B=2 (10) on the Aer Simulator}
 \end{figure}
 
 We shall now execute a subtraction operation with the same initial values for the A and B registers and submit a job to an IBM Quantum Computer
@@ -40,7 +40,7 @@ of a Random Access Memory module. In the case of the Quantum computer, a qubit c
         \centering
         \includegraphics[scale=0.7]{images/6_Complete_System/adder_subtractor_ibmq_result.pdf}
         \caption{The histogram of the possible values of the Output register (with omitted the five leading zero'ed qubits) when the Quantum ALU performed
-        an addition with A=3 and B=2 on the IBM Kyoto Quantum Computer}
+        an addition with A=3 (11) and B=2 (10) on the IBM Kyoto Quantum Computer}
 \end{figure}
 
 We can see that the expected value ($101_2$) has a probability of $17.64\%$ to be output'ed by the circuit.
@@ -67,7 +67,7 @@ The result from the Aer simulator (see Figure (6.5))is what we expected. The res
 \begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.7]{images/6_Complete_System/multiplier_aer_result.pdf}
-    \caption{The histogram of the possible values of the Output register when the Quantum ALU performed a multiplication with A=B=2 on the Aer Simulator}
+    \caption{The histogram of the possible values of the Output register when the Quantum ALU performed a multiplication with A=B=2 (10) on the Aer Simulator}
 \end{figure}
 
 Executing the same operation on a Quantum computer yields again the same behavior. We get counts of possible outputs instead of a definite answer (see Figure (6.6)).
@@ -75,11 +75,13 @@ Executing the same operation on a Quantum computer yields again the same behavio
 \begin{figure}[!ht]
         \centering
         \includegraphics[scale=0.7]{images/6_Complete_System/multiplier_ibmq_result.pdf}
-        \caption{The histogram of the possible values of the Output register when the Quantum ALU performed a multiplication with A=B=2 on the IBM Osaka QUantum Computer}
+        \caption{The histogram of the possible values of the Output register when the Quantum ALU performed a multiplication with A=B=2 (10) on the IBM Osaka QUantum Computer}
 \end{figure}
 
 We note that the expected output ($0100_2=4_{10}$) has a $9.42\%$ probability.
 
+\newpage
+\subsection{Testing the Comparison operation on the Aer Simulator and on a real Quantum Computer}
 Lastly, we executed the NKO Comparator with the two two-qubit registers inputs A and B to be again $3$ and $2$ respectively and we only measured the two qubits
 of the status Quantum register. The execution of the Quantum circuit happened on the IBM Osaka Quantum Computer too. We will again contrast the real-hardware result with the
 simulation results.
