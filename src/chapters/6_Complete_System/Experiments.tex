@@ -1,6 +1,6 @@
 \newpage
 \section{Experimental Results on Simulators and Quantum Computers}
-\subsection{c}
+\subsection{Testing the Addition and Subtraction operations on the Aer Simulator and on a real Quantum Computer}
 
 We will now demonstrate all of the operations of the Quantum ALU starting with addition and subtraction. Before executing any arithmetic and logic 
 operation we have to initialize the Opcode register with the appropriate opcode (see Table 6.1).
@@ -29,8 +29,18 @@ In Figure (6.3) we can see this even more clearly (we omitted the five leading z
 
 We shall now execute a subtraction operation with the same initial values for the A and B registers and submit a job to an IBM Quantum Computer
 so that the circuit can be executed. We want to note that the expected output is $101_2$ which can be interpreted in many ways but because
-the Adder-Subtractor implements a design where it performs signed and unsigned-mangitude addition and subtraction and because $A @> B$ the
-third qubit of the output register can be omitted thus the result becomes $01_2$ or just $1$ which is the expected output. 
+the Adder-Subtractor implements a design where it performs signed and unsigned-mangitude addition and subtraction and because $A \geq B$ the
+third qubit of the output register can be omitted thus the result becomes $01_2$ or just $1$ which is the expected output.
+
+Before showing any experimental results, we would like to note that the Aer simulator and the IBM Quantum Computers execute the quantum circuits
+multiple times. The Aer simulator executes them 1024 times while the IBM Quantum Computers execute them four times more, or 4096 times. Thus the
+probability of the state of a specific quantum register is either obtained by the following equation:
+
+\begin{equation}
+    P(o) = \lceil \frac{c}{n}100 \rceil
+\end{equation}
+where $o$ is the state of the quantum register, $c$ is the \textit{count}, the number of times the specific state was the actual output, and $n$ is the total number
+of executions which can be either 1024 (for the Aer simulations) or 4096 (for any IBM Quantum Computer).
 
 In Figure (6.4) we can see multiple expected output values. Although we did not use any gate that puts any qubit in superposition, Quantum Computers
 are vulnerable to noise. Noise, just like in classical computers, can cause problems like flipping a single bit's state from example; a memory cell
@@ -75,7 +85,7 @@ Executing the same operation on a Quantum computer yields again the same behavio
 \begin{figure}[!ht]
         \centering
         \includegraphics[scale=0.7]{images/6_Complete_System/multiplier_ibmq_result.pdf}
-        \caption{The histogram of the possible values of the Output register when the Quantum ALU performed a multiplication with A=B=2 (10) on the IBM Osaka QUantum Computer}
+        \caption{The histogram of the possible values of the Output register when the Quantum ALU performed a multiplication with A=B=2 (10) on the IBM Osaka Quantum Computer}
 \end{figure}
 
 We note that the expected output ($0100_2=4_{10}$) has a $9.42\%$ probability.
