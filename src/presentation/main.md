@@ -10,20 +10,23 @@ header-includes:
 - \usepackage{braket}
 ---
 
+# What is Quantum Computing ?
+* A field of science that studies computing applications on *quantum computers*
+* A *quantum computer* is a computing device which uses quantum phonemena to encode, decode, process and transmit information.
+
 # Mathematical Elements of Quantum Computing
 
 ## Dirac Notation
-* $\vec{u}=u_x\hat{i}+u_y\hat{j}+u_z\hat{k}=\begin{bmatrix}u_x\\ u_y\\ u_z\end{bmatrix}\rightarrow\ket{u}=\begin{bmatrix}u_1\\ u_2\\ \vdots\\ u_i\end{bmatrix},\ket{u}\in\mathbb{V}^n$
-* Dual space $\mathbb{V}^{n\star}$ of $\mathbb{V}^n$ where:
-$$\bra{u}=\begin{bmatrix}u_1^\star&\hdots&u_n^\star\end{bmatrix}=\begin{bmatrix}u_1\\ \vdots\\ u_n\end{bmatrix}^\dag$$
+* Bra $\bra{\psi}$ & Ket $\ket{\psi}$
+* $\ket{\psi}=\psi_1\ket{0}+\psi_2\ket{1}=\begin{bmatrix}\psi_1\\\psi_2\end{bmatrix},\ket{\psi}\in\mathbb{V}^2,\psi_i\in\mathbb{C}$
+* $\bra{\psi}=\begin{bmatrix}\psi_1^*&\psi_2^*\end{bmatrix}=\begin{bmatrix}\psi_1\\\psi_2\end{bmatrix}^T,\ket{\psi}\in\mathbb{V}^{2^*},\psi_i\in\mathbb{C}$
 
-## Hilbert Space
-* Inner product:
-$$ \braket{u|v}=\begin{bmatrix}u_1^\star&\hdots&u_n^\star\end{bmatrix}\times\begin{bmatrix}v_1\\ \vdots\\ v_n\end{bmatrix}\text{ where }\ket{u},\ket{u}\in\mathbb{V}^n$$
-* Now $\braket{u|v}=\ket{w}\in\mathbb{H}^{\otimes n}$
+* Hilber space; Inner product:
+$$ \braket{u|v}=\begin{bmatrix}u_1^\star&\hdots&u_n^\star\end{bmatrix}\times\begin{bmatrix}v_1\\ \vdots\\ v_n\end{bmatrix}\text{ where }\ket{u},\ket{v}\in\mathbb{V}^n$$
+* Then: $\braket{u|v}=\ket{w}\in\mathbb{H}^{\otimes n}$
 
 ## Operators
-* When applied to a vector, it transforms it.
+* An *operator* is a mathematical object that, when applied on a vector, it transforms it.
 * $A\ket{\psi}=\ket{\psi^\prime}$
 * $\bra{\psi}A=\bra{\psi^\prime}$
 * $(A+B)\ket{\psi}=A\ket{\psi}+B\ket{\psi}$
@@ -67,10 +70,11 @@ $$
 * Bit: two states, $0$ or $1$ $\rightarrow$ Qubit: a linear combinations of two states
 * The *computational basis* vectors: $\ket{0}=\begin{bmatrix}1\\0\end{bmatrix}$ and $\ket{1}=\begin{bmatrix}0\\1\end{bmatrix}$
 * $\ket{q}=q_1\ket{0}+q_2\ket{1}$
+* Quantum register; $\ket{q}=\ket{q_1}\otimes\ket{q_2}\hdots\otimes\ket{q_n}=\ket{q_1q_2\hdots q_n},\ket{q}\in\mathbb{H}^{\otimes n}$
 
 ![Bloch's sphere](images/bloch_sphere.pdf){ width=40%, height=40% }
 
-# Quantum Gates
+# The Circuit Model of Quantum Computing
 
 ## Single-qubit Gates
 * NOT/X gate: $X=\begin{bmatrix}0&1\\1&0\end{bmatrix}$
@@ -93,18 +97,15 @@ $$
 
 * Swap gate:
 
-![The Swap gate diagram](images/swap_gate.pdf)
-
-## Quantum Circuits
-
-* An example Quantum circuit
-
-![The Quantum Half Adder circuit](images/half_adder.pdf)
+![The Swap gate diagram](images/swap_gate.pdf){width=20%, height=20%}
 
 # The Arithmetic Logic Unit
+* An *arithmetic and logic unit* is hardware component of a classical
+computer whose operative is to compute basic arithmetic operations and logical comparisons.
+* Inputs; *opcode* + *general purpose register(s)* + *status register* + etc
+* Outpus; *operation output* + *status*
 
-## The Unit
-![The Arithmetic Logic Unit diagram](images/alu.pdf){ width=50%, height=50% }
+![The Arithmetic Logic Unit diagram](images/alu.pdf){ width=40%, height=40% }
 
 ## Operations and Opcodes
 ![An example opcode table of an ALU](images/alu_opcode_table.pdf){ width=50%, height=50% }
@@ -121,25 +122,40 @@ $$
 * Relatively new library (just hit version 1.0!)
 * `QuantumCircuit, QuantumRegisters, ClassicalRegisters`
 
-## Qiskit (cont.)
-* Gates are implemented as class methods of the `QuantumCircuit` class
-    * `.x()` for the NOT gate
-    * `.h()` for the Hadamard gate
-    * `.cx()` for the CNOT gate
-    * `.ccx()` for the CCNOT gate
-    * `.swap()` for the SWAP gate
-
 ## IBM Quantum Platform
 * A Web API written in Python to send jobs to either a real Quantum Computer or a simulator
 * Very easy to use and setup (Get an API Token $\rightarrow$ Setup and account in a Python enviroment $\rightarrow$ Profit!)
-* Retrieve state probability counts anytime using the service
-* Free (up to 10 compute minutes per month for a free account)
+* Pass Managers and Transpilers
+    * IBM's quantum computers require ISA compatible circuits
+    * Easy: use the `QiskitRuntimeService.least_busy()` and `generate_preset_pass_manager()` methods from the Qiskit Runtime and Qiskit libraries
 
-## Pass Managers and Transpilers
-* IBM's quantum computers require ISA compatible circuits
-* Easy: use the `QiskitRuntimeService.least_busy()` and `generate_preset_pass_manager()` methods from the Qiskit Runtime and Qiskit libraries
+## Coding a Quantum Circuit
+### The Quantum Half Adder circuit
+```py
+# Instantiation and initialization
+from qiskit import QuantumCircuit, QuantumRegister
+a = QuantumRegister(1, 'A')
+b = QuantumRegister(1, 'B')
+o = QuantumRegister(1, 'O')
+meas = ClassicalRegister(2, 'meas') # Used for measurements
+circuit = QuantumCircuit(a, b, o, meas)
+
+# The algorithm
+circuit.ccx(a, b, o)
+circuit.cx(a, b)
+
+# Measurements
+circuit.measure((b, o), meas)
+# Alternatively
+circuit.measure_all()
+```
+## Coding a Quantum Circuit
+### The Quantum Half Adder circuit
+
+![The Quantum Half Adder circuit](images/half_adder.pdf)
 
 # Implementing the Quantum ALU
+
 
 ## Qiskit Implementation of the Adder-Subtractor circuit
 
@@ -147,20 +163,8 @@ $$
 
 ## Qiskit Implementation of the Adder-Subtractor circuit
 
-* Import the appropriate classes
-```py
-from qiskit import QuantumCircuit, QuantumRegister
-```
-* Create the circuit
-```py
-qfa = QuantumCircuit(4)
-qfa.ccx(0, 1, 3)
-qfa.cx(0, 1)
-qfa.ccx(1, 2, 3)
-qfa.cx(1, 2)
-qfa.cx(0, 1)
-qfa = qfa.to_gate() # create the custom gate for later
-```
+![The Quantum Ripple-Carry Adder circuit $n=2$](images/varsized_full_adder_n2.pdf){width=70%, height=70%}
+
 
 ## Qiskit Implementation of the Adder-Subtractor circuit
 $$
@@ -169,137 +173,22 @@ $$
 
 ![The Quantum Adder-Subtractor circuit](images/quantum_adder_subtractor.pdf){ width=80%, height=65% }
 
-## Qiskit Implementation of the Adder-Subtractor circuit
-$$
-A-B=A+(\lnot B)+1
-$$
-
-* Create the Adder-Subtractor circuit (for 2-qubit inputs)
-```py
-ctrl = QuantumRegister(1, 'ctrl')
-a = QuantumRegister(2, 'a')
-b = QuantumRegister(2, 'b')
-cin = QuantumRegister(2, 'out')
-overflow = QuantumRegister(1, 'overflow')
-qas = QuantumCircuit(ctrl, a, b, cin, overflow)
-```
-
-* Get the 2s complement of $B$
-```py
-for i in range(2):
-    qas.cx(ctrl, b[i])
-qas.cx(ctrl, cin[0])
-```
-
-## Qiskit Implementation of the Adder-Subtractor circuit
-$$
-A-B=A+(\lnot B)+1
-$$
-
-* Append the Quantum Full Adder gate to the circuit for $n=2$ iterations
-```py
-for i in range(2):
-    qas.append(qfa, [a[i], b[i], cin[i], overflow[:]])
-    if i+1 > 2:
-        qas.swap(cin[1+1], overflow)
-```
-
-* Revert $B$ to its initial state $\lnot(\lnot B)=B$
-```py
-for i in reversed(range(2)):
-    qas.cx(ctrl, b[i])
-```
+## Qiskit Implementation of the Integer Multiplier
+![An example of binary multiplication ($2\times 3$)](images/multiplication_example.pdf){ width=20%, height=20%}
 
 ## Qiskit Implementation of the Integer Multiplier
-
-![An example of binary multiplication of 2-bit "wide" integers](images/multiplication_example.pdf){ width=20%, height=20%}
-
-![The Integer Multiplier Circuit](images/multiplier.pdf){ width=50%, height=40%}
-
-## Qiskit Implementation of the Integer Multiplier
-
-* Initialize the circuit
-```py
-from qiskit import QuantumCircuit, QuantumRegister
-a = QuantumRegister(2, 'a')
-b = QuantumRegister(2, 'b')
-out = QuantumRegister(8, 'out')
-qmul = QuantumCircuit(a, b, out)
-```
-* Compute the partial products
-```py
-k = 0
-for i in range(2):
-    for j in range(2):
-        qmul.ccx(a[i], b[j], out[k])
-        k += 1
-```
-
-## Qiskit Implementation of the Integer Multiplier
-
-* Append the Quantum Full Adder and produce the final products
-```py
-qmul.append(qfa, (out[1], out[2], out[4], out[5]))
-qmul.append(qfa, (out[3], out[5], out[6], out[7]))
-```
-
-* Output is stored at register locations: `out[0]`, `out[4]`, `out[6]`, `out[7]`
+![The Integer Multiplier Circuit](images/multiplier_diagram.pdf){ width=70%, height=70%}
 
 ## Qiskit Implementation of the Integer Comparator
-
 ![The Integer Comparator circuit](images/nko_comparator.pdf)
 
 ## Qiskit Implementation of the Integer Comparator
-* Create the $S$ gate
-```py
-s = QuantumCircuit(4, name="S")
-s.cx(0, 2)
-s.ccx(0, 2, 3)
-s.cx(1, 2)
-s.ccx(1, 2, 3)
-s = s.to_gate()
-```
-
 ![](images/sgate.pdf)
 ![](images/sgate_raw.pdf)
 
 ## Qiskit Implementation of the Integer Comparator
-* Create the $S^\dag$ quantum gate
-```py
-sdag = QuantumCircuit(4, name="Sdag")
-sdag.ccx(1, 2, 3)
-sdag.cx(1, 2)
-sdag.ccx(0, 2, 3)
-sdag.cx(0, 2)
-sdag = sdag.to_gate()
-```
-
 ![](images/sdaggate.pdf)
 ![](images/sdaggate_raw.pdf)
-
-## Qiskit Implementation of the Integer Comparator
-* Apply the S gate iteratively for $n=2$ qubits
-```py
-for i in range(2):
-    circuit.append(s, (aux[i], a[i], b[i], aux[i+1]))
-```
-* `if A = B then A - B = 0`
-```py
-from qiskit.circuit.library import MCXGate
-circuit.append(MCXGate(n, ctrl_state=0), (b[:] + eq[:]))
-```
-* `if A >= B then MSB(B) is set`
-```py
-circuit.cx(b[-1], gl)
-
-```
-
-## Qiskit Implementation of the Integer Comparator
-* Finally, un-compute B to reset it to its initial state using the $S^\dag$ gate
-```py
-for i in reversed(range(2)):
-    circuit.append(sdag, (aux[i], a[i], b[i], aux[i+1]))
-```
 
 # The Complete Picture
 ## QALU Operations
